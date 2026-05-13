@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logoMt from "@/assets/logo-mt.svg";
 
 const links = [
   { to: "/", label: "Home" },
