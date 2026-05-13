@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logoMt from "@/assets/logo-mt.svg";
 
 const links = [
   { to: "/", label: "Home" },
@@ -33,9 +34,7 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-md bg-primary text-primary-foreground grid place-items-center font-display font-bold text-lg group-hover:glow transition-all">
-            MT
-          </div>
+          <img src={logoMt} alt="MT Design" className="h-10 w-auto" />
           <span className="font-display font-semibold tracking-tight hidden sm:inline">
             MT Design
           </span>

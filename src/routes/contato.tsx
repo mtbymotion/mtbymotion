@@ -25,8 +25,8 @@ function ContatoPage() {
             Conte sobre seu projeto. Respondemos em até 24h úteis.
           </p>
           <ul className="mt-12 space-y-5 text-foreground/90">
-            <li className="flex items-center gap-3"><Mail className="text-primary" size={18}/> contato@mtdesign.com</li>
-            <li className="flex items-center gap-3"><Phone className="text-primary" size={18}/> +55 (00) 00000-0000</li>
+            <li className="flex items-center gap-3"><Mail className="text-primary" size={18}/> <a href="mailto:contato.mtmotion@gmail.com" className="hover:text-primary transition-colors">contato.mtmotion@gmail.com</a></li>
+            <li className="flex items-center gap-3"><Phone className="text-primary" size={18}/> <a href="tel:+5531996357835" className="hover:text-primary transition-colors">+55 (31) 99635-7835</a></li>
             <li className="flex items-center gap-3"><MapPin className="text-primary" size={18}/> Brasil</li>
           </ul>
         </Reveal>

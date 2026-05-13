@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import logoMt from "@/assets/logo-mt.svg";
 
 export function Footer() {
   const [time, setTime] = useState("");
@@ -57,9 +58,7 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-10 h-10 rounded-md bg-primary text-primary-foreground grid place-items-center font-display font-bold">
-              MT
-            </div>
+            <img src={logoMt} alt="MT Design" className="h-10 w-auto" />
             <span className="font-display font-semibold">MT Design</span>
           </div>
           <p className="text-sm text-muted-foreground">
@@ -98,10 +97,16 @@ export function Footer() {
           </p>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-2">
-              <Mail size={14} className="text-primary" /> contato@mtdesign.com
+              <Mail size={14} className="text-primary" />
+              <a href="mailto:contato.mtmotion@gmail.com" className="hover:text-primary transition-colors">
+                contato.mtmotion@gmail.com
+              </a>
             </li>
             <li className="flex items-center gap-2">
-              <Phone size={14} className="text-primary" /> +55 (00) 00000-0000
+              <Phone size={14} className="text-primary" />
+              <a href="tel:+5531996357835" className="hover:text-primary transition-colors">
+                +55 (31) 99635-7835
+              </a>
             </li>
             <li className="flex items-center gap-2">
               <MapPin size={14} className="text-primary" /> Brasil
@@ -114,23 +119,14 @@ export function Footer() {
             Social
           </p>
           <div className="flex gap-3">
-            {[
-              { icon: Instagram, href: "#" },
-              { icon: Linkedin, href: "#" },
-            ].map((s, i) => (
-              <a
-                key={i}
-                href={s.href}
-                className="w-10 h-10 rounded-full border border-border grid place-items-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
-              >
-                <s.icon size={16} />
-              </a>
-            ))}
             <a
-              href="#"
-              className="w-10 h-10 rounded-full border border-border grid place-items-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all text-xs font-bold"
+              href="https://www.instagram.com/mtbymotion/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-10 h-10 rounded-full border border-border grid place-items-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
             >
-              Be
+              <Instagram size={16} />
             </a>
           </div>
         </div>
