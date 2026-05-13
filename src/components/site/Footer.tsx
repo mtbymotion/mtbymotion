@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Instagram, Linkedin, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import logoMt from "@/assets/logo-mt.svg";
 
 export function Footer() {
   const [time, setTime] = useState("");
