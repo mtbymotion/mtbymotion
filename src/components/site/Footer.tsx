@@ -57,9 +57,8 @@ export function Footer() {
       {/* Main grid */}
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <div className="flex items-center gap-2 mb-4">
-            <img src={logoMt} alt="MT Design" className="h-10 w-auto" />
-            <span className="font-display font-semibold">MT Design</span>
+          <div className="flex items-center mb-4">
+            <img src={logoMt} alt="MT Design" className="h-12 w-auto" />
           </div>
           <p className="text-sm text-muted-foreground">
             Sistema de Criação de Vídeos Animados e Branding.
