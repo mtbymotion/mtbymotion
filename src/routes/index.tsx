@@ -337,12 +337,13 @@ function HomePage() {
 function ContactForm() {
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        alert("Mensagem enviada! Entraremos em contato em breve.");
-      }}
+      action="https://formsubmit.co/contato.mtmotion@gmail.com"
+      method="POST"
       className="grid gap-5 p-8 md:p-12 rounded-3xl border border-border bg-surface"
     >
+      <input type="hidden" name="_subject" value="Novo contato pelo site MT Design" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Nome" name="nome" />
         <Field label="Sobrenome" name="sobrenome" />
@@ -355,6 +356,7 @@ function ContactForm() {
         </label>
         <textarea
           required
+          name="mensagem"
           rows={5}
           className="mt-2 w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none transition-colors resize-none"
         />
