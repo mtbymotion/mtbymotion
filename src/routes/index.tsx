@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ArrowRight, Sparkles, Target, TrendingUp, Film, Music, PenTool, Play, Palette } from "lucide-react";
+import { ArrowRight, Sparkles, Target, TrendingUp, Film, PenTool, Play, Palette } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { VimeoEmbed } from "@/components/site/VimeoEmbed";
+import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -109,14 +111,23 @@ function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-16 flex items-center gap-4"
+            className="mt-16 flex items-center gap-5 flex-wrap"
           >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
+            <div className="flex -space-x-3">
+              {[
+                { name: "Spotify", bg: "#1DB954", color: "#000" },
+                { name: "Airbnb", bg: "#FF5A5F", color: "#fff" },
+                { name: "UTMify", bg: "#7C3AED", color: "#fff" },
+                { name: "KFC", bg: "#E4002B", color: "#fff" },
+              ].map((b) => (
                 <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-background bg-gradient-to-br from-primary to-accent"
-                />
+                  key={b.name}
+                  title={b.name}
+                  className="w-11 h-11 rounded-full border-2 border-background grid place-items-center text-[10px] font-bold tracking-tight"
+                  style={{ backgroundColor: b.bg, color: b.color }}
+                >
+                  {b.name}
+                </div>
               ))}
             </div>
             <div>
@@ -178,7 +189,6 @@ function HomePage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
               { icon: Film, title: "Edição", desc: "Cortes precisos, ritmo e narrativa que prendem do início ao fim." },
-              { icon: Music, title: "Sound Design", desc: "Trilhas e efeitos sonoros que ampliam a emoção do vídeo." },
               { icon: PenTool, title: "Criação", desc: "Conceito, roteiro e direção criativa de ponta a ponta." },
               { icon: Play, title: "Animação 2D", desc: "Motion graphics fluido com identidade visual única." },
               { icon: Palette, title: "Design", desc: "Branding e sistemas visuais que sustentam grandes marcas." },
@@ -222,24 +232,28 @@ function HomePage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-2">
-            {[
-              { title: "Lançamento SAAS", tag: "Motion / Branding" },
-              { title: "Brand Reveal", tag: "Animação 2D" },
-              { title: "Trailer Institucional", tag: "Edição / Sound" },
-              { title: "Identidade em Movimento", tag: "Motion Design" },
-            ].map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.05}>
-                <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-surface">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-surface to-background group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                    <p className="text-xs uppercase tracking-widest text-primary mb-2">{p.tag}</p>
-                    <h3 className="font-display font-bold text-3xl">{p.title}</h3>
+          <div className="grid gap-8 md:grid-cols-2">
+            {projects.slice(0, 4).map((p, i) => (
+              <Reveal key={p.vimeoId} delay={i * 0.05}>
+                <Link
+                  to="/projetos"
+                  className="group block rounded-2xl overflow-hidden border border-border bg-surface hover:border-primary/50 transition-all"
+                >
+                  <div className="overflow-hidden">
+                    <VimeoEmbed vimeoId={p.vimeoId} title={p.title} />
                   </div>
-                  <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-background/80 backdrop-blur grid place-items-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <ArrowRight size={18} className="-rotate-45" />
+                  <div className="p-6 flex items-start justify-between gap-4">
+                    <div>
+                      {p.category && (
+                        <p className="text-xs uppercase tracking-widest text-primary mb-2">{p.category}</p>
+                      )}
+                      <h3 className="font-display font-bold text-xl md:text-2xl">{p.title}</h3>
+                    </div>
+                    <div className="w-10 h-10 shrink-0 rounded-full bg-background grid place-items-center group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <ArrowRight size={16} className="-rotate-45" />
+                    </div>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -260,19 +274,35 @@ function HomePage() {
           </Reveal>
 
           <div className="mt-16 grid gap-6 md:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <Reveal key={i} delay={i * 0.08}>
-                <div className="p-8 rounded-2xl border border-border bg-background text-left h-full">
+            {[
+              {
+                quote: "Entregaram um motion impecável que elevou nossa apresentação de produto. Processo fluido do briefing à finalização.",
+                name: "Rafael Mendes",
+                role: "Head of Marketing, NorthPeak",
+                avatar: "https://i.pravatar.cc/120?img=12",
+              },
+              {
+                quote: "A direção criativa e o cuidado com cada frame fizeram toda diferença na percepção da nossa marca.",
+                name: "Camila Andrade",
+                role: "Brand Manager, Vivace Studio",
+                avatar: "https://i.pravatar.cc/120?img=47",
+              },
+              {
+                quote: "Profissionalismo, prazo e um resultado visual acima do esperado. Recomendo sem pensar duas vezes.",
+                name: "Lucas Ferreira",
+                role: "CEO, Orbita Tech",
+                avatar: "https://i.pravatar.cc/120?img=33",
+              },
+            ].map((t, i) => (
+              <Reveal key={t.name} delay={i * 0.08}>
+                <div className="p-8 rounded-2xl border border-border bg-background text-left h-full flex flex-col">
                   <p className="text-2xl text-primary font-display mb-4">"</p>
-                  <p className="text-foreground/90 leading-relaxed">
-                    Espaço reservado para depoimentos reais de clientes que confiaram na MT Design
-                    para elevar a comunicação visual de suas marcas.
-                  </p>
+                  <p className="text-foreground/90 leading-relaxed flex-1">{t.quote}</p>
                   <div className="mt-6 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent" />
+                    <img src={t.avatar} alt={t.name} className="w-11 h-11 rounded-full object-cover border border-border" />
                     <div>
-                      <p className="font-semibold text-sm">Cliente {i}</p>
-                      <p className="text-xs text-muted-foreground">Empresa</p>
+                      <p className="font-semibold text-sm">{t.name}</p>
+                      <p className="text-xs text-muted-foreground">{t.role}</p>
                     </div>
                   </div>
                 </div>
@@ -307,12 +337,13 @@ function HomePage() {
 function ContactForm() {
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        alert("Mensagem enviada! Entraremos em contato em breve.");
-      }}
+      action="https://formsubmit.co/contato.mtmotion@gmail.com"
+      method="POST"
       className="grid gap-5 p-8 md:p-12 rounded-3xl border border-border bg-surface"
     >
+      <input type="hidden" name="_subject" value="Novo contato pelo site MT Design" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
       <div className="grid md:grid-cols-2 gap-5">
         <Field label="Nome" name="nome" />
         <Field label="Sobrenome" name="sobrenome" />
@@ -325,6 +356,7 @@ function ContactForm() {
         </label>
         <textarea
           required
+          name="mensagem"
           rows={5}
           className="mt-2 w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none transition-colors resize-none"
         />

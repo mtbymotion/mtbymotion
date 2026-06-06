@@ -35,9 +35,6 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
           <img src={logoMt} alt="MT Design" className="h-10 w-auto" />
-          <span className="font-display font-semibold tracking-tight hidden sm:inline">
-            MT Design
-          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
@@ -54,12 +51,14 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/contato"
+          <a
+            href={"https://wa.me/5531996357835?text=" + encodeURIComponent("Olá vim do seu site e gostaria de fazer um orçamento para o meu projeto!")}
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:glow transition-all"
           >
             Solicitar Orçamento
-          </Link>
+          </a>
           <button
             className="lg:hidden p-2 text-foreground"
             onClick={() => setOpen((v) => !v)}

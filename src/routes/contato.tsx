@@ -33,22 +33,26 @@ function ContatoPage() {
 
         <Reveal delay={0.1}>
           <form
-            onSubmit={(e) => { e.preventDefault(); alert("Mensagem enviada!"); }}
+            action="https://formsubmit.co/contato.mtmotion@gmail.com"
+            method="POST"
             className="grid gap-5 p-8 md:p-10 rounded-3xl border border-border bg-surface"
           >
+            <input type="hidden" name="_subject" value="Novo contato pelo site MT Design" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
             <div className="grid sm:grid-cols-2 gap-5">
               {[["Nome","nome"],["Sobrenome","sobrenome"],["Telefone","telefone"],["E-mail","email"]].map(([l,n]) => (
                 <div key={n}>
                   <label className="text-xs uppercase tracking-widest text-muted-foreground">{l}</label>
-                  <input required name={n} className="mt-2 w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none" />
+                  <input required name={n} type={n === "email" ? "email" : n === "telefone" ? "tel" : "text"} className="mt-2 w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none" />
                 </div>
               ))}
             </div>
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Descrição do projeto</label>
-              <textarea required rows={5} className="mt-2 w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none resize-none" />
+              <textarea required name="mensagem" rows={5} className="mt-2 w-full px-4 py-3 rounded-lg bg-background border border-border focus:border-primary focus:outline-none resize-none" />
             </div>
-            <button className="self-start inline-flex items-center gap-2 px-7 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:glow transition-all">
+            <button type="submit" className="self-start inline-flex items-center gap-2 px-7 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:glow transition-all">
               Enviar <ArrowRight size={18}/>
             </button>
           </form>
