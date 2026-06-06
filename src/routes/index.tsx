@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ArrowRight, Sparkles, Target, TrendingUp, Film, Music, PenTool, Play, Palette } from "lucide-react";
+import { ArrowRight, Sparkles, Target, TrendingUp, Film, PenTool, Play, Palette } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
+import { VimeoEmbed } from "@/components/site/VimeoEmbed";
+import { projects } from "@/data/projects";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -109,14 +111,23 @@ function HomePage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.1, duration: 0.8 }}
-            className="mt-16 flex items-center gap-4"
+            className="mt-16 flex items-center gap-5 flex-wrap"
           >
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
+            <div className="flex -space-x-3">
+              {[
+                { name: "Spotify", bg: "#1DB954", color: "#000" },
+                { name: "Airbnb", bg: "#FF5A5F", color: "#fff" },
+                { name: "UTMify", bg: "#7C3AED", color: "#fff" },
+                { name: "KFC", bg: "#E4002B", color: "#fff" },
+              ].map((b) => (
                 <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-background bg-gradient-to-br from-primary to-accent"
-                />
+                  key={b.name}
+                  title={b.name}
+                  className="w-11 h-11 rounded-full border-2 border-background grid place-items-center text-[10px] font-bold tracking-tight"
+                  style={{ backgroundColor: b.bg, color: b.color }}
+                >
+                  {b.name}
+                </div>
               ))}
             </div>
             <div>
