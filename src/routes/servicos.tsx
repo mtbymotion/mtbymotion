@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/site/Reveal";
-import { Film, Music, PenTool, Play, Palette, ArrowRight } from "lucide-react";
+import { Film, PenTool, Play, Palette, ArrowRight } from "lucide-react";
 
 const services = [
   { icon: Film, title: "Edição", desc: "Cortes precisos, ritmo e narrativa que prendem do início ao fim." },
-  { icon: Music, title: "Sound Design", desc: "Trilhas e efeitos sonoros que ampliam a emoção do vídeo." },
   { icon: PenTool, title: "Criação", desc: "Conceito, roteiro e direção criativa de ponta a ponta." },
   { icon: Play, title: "Animação 2D", desc: "Motion graphics fluido com identidade visual única." },
   { icon: Palette, title: "Design & Branding", desc: "Sistemas visuais que sustentam grandes marcas." },
